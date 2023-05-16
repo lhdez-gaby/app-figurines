@@ -1,0 +1,25 @@
+@import './base.css';
+
+a{
+  text-decoration: none;
+  transition: 0.4s;
+}
+
+
+.wrapper{
+  width:90%;
+  max-width: 64rem;
+}
+
+.btn{
+  background-color: var(--vt-c-pink);
+  color: var(--color-text-white);
+  font-weight: 800;
+  border-radius: 1.25rem;
+  padding: 0.3125rem;
+  border: none;
+}
+
+.btn :hover{
+  background-color: var(--vt-c-blue-hard);
+}

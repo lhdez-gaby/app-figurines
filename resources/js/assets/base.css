@@ -1,0 +1,38 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+  --vt-c-white: #ffffff;
+  --vt-c-pink: #EA4B9B;
+  --vt-c-blue-soft: #07A5E7;
+  --vt-c-blue-hard: #2C61AC;
+  --vt-c-black: #181818;
+  --vt-c-blue-light: rgba(7,165,231,0.70);
+}
+
+/* semantic color variables for this project */
+:root {
+  --color-background-gradient: linear-gradient(to right,#07A5E7,#2C61AC);
+  --color-background-banner: var(--vt-c-blue-light):
+  --color-text-link: var(--vt-c-pink);
+  --color-text-link-active: var(--vt-c-blue-soft);
+  --color-text-white: var(--vt-c-white);
+  --color-text-black: var(--vt-c-black);
+  
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  color: var(--color-text-black);
+  font-size: 0.9375rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
