@@ -28,6 +28,7 @@ class DetalleEventosController extends Controller
             'precio' =>'required|float',
             'duracion' =>'required|numeric'
         ]);
+        
         $evento = new detalle_eventos($request->input());
         $evento->save();
         return redirect('miseventos');

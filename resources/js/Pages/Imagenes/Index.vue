@@ -4,8 +4,11 @@ import { Head,Link,useForm } from '@inertiajs/vue3';
 import DangerButton from '@/Components/DangerButton.vue';
 import Swal from 'sweetalert2';
 
-const props = defineProps({
-    eventos: {type:Object}
+// const props = defineProps({
+//     images: {type:Object}
+// });
+defineProps({
+    images:Object,
 });
 const  form = useForm({
     id:''
@@ -21,7 +24,7 @@ const deleteImagen = (id,name) =>{
         confirmButtonText:'<i class="fa-solid fa-check"></i> Sí,eliminar',
         cancelButtonText:'<i class="fa-solid fa-ban"></i> Cancelar'
     }).then((result) =>{
-        form.delete(route('imagenes.destroy',id));
+        form.delete(route('misimagenes.destroy',id));
     });
 }
 </script>
@@ -55,10 +58,10 @@ const deleteImagen = (id,name) =>{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="imgn, i in imagenes" :key="imgn.id">
-                            <td class="border border-gray-400 px-4 py-4">{{ (i+1) }}</td>
+                        <tr v-for="imgn in images.data" :key="imgn.id">
+                            <td class="border border-gray-400 px-4 py-4">{{ imgn.id }}</td>
                             <td class="border border-gray-400 px-4 py-4">{{ imgn.nombre }}</td>
-                            <td class="border border-gray-400 px-4 py-4">{{ imgn.imagen }}</td>
+                            <td class="border border-gray-400 px-4 py-4">{{ imgn.imagen }}<img class="w-12 h-12" :src="imgn.imagen" :alt="imgn.nombre"></td>
                             <td class="border border-gray-400 px-4 py-4">
                                 <Link :href="route('misimagenes.edit',imgn.id)"
                                 :class="'px-4 py-2 bg-yellow-800 text-white border rounded-md font-semibold text-xs'">

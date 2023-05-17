@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\imagenes;
 use Illuminate\Http\Request;
+use App\Models\imagenes;
 use Inertia\Inertia;
+use App\Http\Resources\ImagenResource;
 
 class ImagenesController extends Controller
 {
     
     public function index()
     {
-        $imagenes = imagenes::all();
-        return Inertia::render('Imagenes/Index',['imagenes'=>$imagenes]);
+        $images = ImagenResource::collection(imagenes::all());
+        return Inertia::render('Imagenes/Index',compact('images'));
     }
 
     public function create()
@@ -22,11 +22,25 @@ class ImagenesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(['nombre'=>'required|max:150']);
-        $request->validate(['imagen'=>'required']);
-        $imagen = new imagenes($request ->input());
-        $imagen->save();
-        return redirect('misimagenes');
+        $request->validate([
+            'imagen'=>['required','image'],
+            'nombre'=>['required','min:3']
+        ]);
+
+        if($request->hasFile('imagen')){
+            $imagen = $request->file('imagen')->store('imagenes');
+            imagenes::create([
+                'nombre' => $request->nombre,
+                'imagen' => $imagen
+            ]);
+
+            // return Redirect::route('misimagenes.index');
+            return redirect('misimagenes');
+        }
+
+        // $imagen = new imagenes($request ->input());
+        // $imagen->save();
+        return Redirect::back();
     }
 
     public function show(imagenes $imagenes)
