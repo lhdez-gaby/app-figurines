@@ -37,6 +37,24 @@ Route::get('/imagenes', function () {
     ]);
 })->name('imagenes');
 
+Route::get('/acerca', function () {
+    return Inertia::render('Imagenes', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('acerca');
+
+Route::get('/videos', function () {
+    return Inertia::render('Videos', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('videos');
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

@@ -3,9 +3,9 @@
         <div class="social item">
            <h3 class="title">Redes Sociales</h3> 
            <div class="icons">
-            <iconFacebook />
-            <IconInstagram />
-            <iconYouTube />
+            <a href="https://www.facebook.com/LosFigurinesanimacion/" target="blank"><iconFacebook /></a>
+            <!-- <IconInstagram /> -->
+            <a href="https://www.youtube.com/@losfigurines8098" target="blank"><iconYouTube /></a>
            </div>
            
         </div>

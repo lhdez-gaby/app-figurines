@@ -45,14 +45,14 @@
             <Link
                 :href="route('login')"
                 class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                >Log in</Link
+                >Iniciar sesión</Link
             >
 
             <Link
                 v-if="canRegister"
                 :href="route('register')"
                 class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                >Register</Link
+                >Registrarse</Link
             >
         </template>
     </div>
@@ -117,7 +117,7 @@
         </div>
         
       </section>
-      //<RouterLink to="/contacto" class="contacto"><button class="btn">Contáctanos</button></RouterLink>
+      <!-- <RouterLink to="/contacto" class="contacto"><button class="btn">Contáctanos</button></RouterLink> -->
     </div>
     </MainLayout>
 </template>
@@ -285,11 +285,13 @@ defineProps({
 .opinion__icon{
   width: 3rem;
   height: 3rem;
+  padding-top: .5rem;
 }
 
 .opinion__texto{
   text-align: center;
   font-style: italic;
+  padding: 1rem;
 }
 
 .contacto{

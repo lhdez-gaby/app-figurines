@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 defineProps({
     images:Object,
 });
+
 const  form = useForm({
     id:''
 })
@@ -50,9 +51,9 @@ const deleteImagen = (id,name) =>{
                 <table class="table-auto border border-gray-400">
                     <thead>
                         <tr class="bg-gray-100">
-                            <th class="px-4 py-4"> #</th> 
+                            <th class="px-4 py-4"> Id</th> 
                             <th class="px-4 py-4"> Título</th>
-                            <th class="px-4 py-4"> Url</th>
+                            <th class="px-4 py-4"> Imagen</th>
                             <th class="px-4 py-4"> </th>
                             <th class="px-4 py-4"> </th>                         
                         </tr>
@@ -61,10 +62,10 @@ const deleteImagen = (id,name) =>{
                         <tr v-for="imgn in images.data" :key="imgn.id">
                             <td class="border border-gray-400 px-4 py-4">{{ imgn.id }}</td>
                             <td class="border border-gray-400 px-4 py-4">{{ imgn.nombre }}</td>
-                            <td class="border border-gray-400 px-4 py-4">{{ imgn.imagen }}<img class="w-12 h-12" :src="imgn.imagen" :alt="imgn.nombre"></td>
+                            <td class="border border-gray-400 px-4 py-4"><img class="h-12 rounded" :src="imgn.imagen" :alt="imgn.nombre"></td>
                             <td class="border border-gray-400 px-4 py-4">
                                 <Link :href="route('misimagenes.edit',imgn.id)"
-                                :class="'px-4 py-2 bg-yellow-800 text-white border rounded-md font-semibold text-xs'">
+                                :class="'px-4 py-2 bg-blue-800 text-white border rounded-md font-semibold text-xs'">
                                     <i class="fa-solid fa-plus-edit"></i> Editar
                                 </Link>
                             </td>

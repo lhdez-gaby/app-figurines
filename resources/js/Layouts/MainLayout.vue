@@ -6,8 +6,14 @@
             <img alt="Logo los figurines" class="logo" src="@/assets/logoFigurines.png" />
         </Link>
         <nav class = "menu">
+            <Link :class="'link'" :href="route('acerca')">
+                Acerca de
+            </Link>
             <Link :class="'link'" :href="route('imagenes')">
-                Imagenes
+                Imágenes
+            </Link>
+            <Link :class="'link'" :href="route('videos')">
+                Videos
             </Link>
           <!-- <RouterLink to="/servicios" class="link">Servicios</RouterLink>
           <RouterLink to="/acerca" class="link">Acerca</RouterLink>
@@ -64,12 +70,13 @@ import { Link } from '@inertiajs/vue3';
   align-items: center;
   justify-content: space-evenly;
   padding: 0.625rem;
+  gap: 3rem;
 }
 
 .menu{
   display: flex;
   flex-direction: row;
-  gap: 7px;
+  gap: 1rem;
 }
 
 nav a.router-link-exact-active {
@@ -84,10 +91,4 @@ nav a.router-link-exact-active {
   color: #07A5E7;
 }
 
-.acciones{
-  display: flex;
-  flex-direction: row;
-  gap: 0.3125rem;
-  align-items: center;
-}
 </style>
