@@ -4,34 +4,48 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\detalle_eventos;
 use Inertia\Inertia;
+use App\Http\Resources\EventoResource;
 
 class DetalleEventosController extends Controller
 {
     
     public function index()
     {
-        $eventos = detalle_eventos::all();
-        return Inertia::render('Eventos/Index', ['eventos'=>$eventos]);
+        $eventos = EventoResource::collection(detalle_eventos::all());
+        return Inertia::render('Eventos/Index',compact('eventos'));
     }
 
     public function create()
     {
-        return Innertia::render('Eventos/Create');
+        return Inertia::render('Eventos/Create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' =>'required|max:200',
-            'imagen' =>'required|max:300',
-            'detalle' =>'required|longText',
-            'precio' =>'required|float',
-            'duracion' =>'required|numeric'
+            'imagen'=>['required','image'],
+            'nombre'=>['required','min:3'],
+            'detalle'=>['required','min:3'],
+            'precio'=>['required'],
+            'duracion'=>['required'],
         ]);
+
         
-        $evento = new detalle_eventos($request->input());
-        $evento->save();
-        return redirect('miseventos');
+        if($request->hasFile('imagen')){
+            $precio = (float)$request->precio;
+            $duracion = (int)$request->duracion;
+            $imagen = $request->file('imagen')->store('eventos');
+            detalle_eventos::create([
+                'nombre' => $request->nombre,
+                'imagen' => $imagen,
+                'detalle' => $request->detalle,
+                'precio' => $precio,
+                'duracion' => $duracion,
+            ]);
+
+            return redirect('miseventos');
+        }
+        return Redirect::back();
     }
 
  

@@ -22,7 +22,7 @@ const deleteImagen = (id,name) =>{
         confirmButtonText:'<i class="fa-solid fa-check"></i> Sí,eliminar',
         cancelButtonText:'<i class="fa-solid fa-ban"></i> Cancelar'
     }).then((result) =>{
-        form.delete(route('misimagenes.destroy',id));
+        form.delete(route('misvideos.destroy',id));
     });
 }
 
@@ -63,7 +63,7 @@ const deleteImagen = (id,name) =>{
                             <td class="border border-gray-400 px-4 py-4">{{ vid.nombre }}</td>
                             <td class="border border-gray-400 px-4 py-4">{{ vid.url_link }}</td>
                             <td class="border border-gray-400 px-4 py-4">
-                                <Link :href="route('misimagenes.edit',vid.id)"
+                                <Link :href="route('misvideos.edit',vid.id)"
                                 :class="'px-4 py-2 bg-blue-800 text-white border rounded-md font-semibold text-xs'">
                                     <i class="fa-solid fa-plus-edit"></i> Editar
                                 </Link>
