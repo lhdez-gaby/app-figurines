@@ -63,7 +63,7 @@ const deleteImagen = (id,name) =>{
                             <td class="border border-gray-400 px-4 py-4">
                                 <Link :href="route('misimagenes.edit',imgn.id)"
                                 :class="'px-4 py-2 bg-blue-800 text-white border rounded-md font-semibold text-xs'">
-                                    <i class="fa-solid fa-plus-edit"></i> Editar
+                                    <i class="fa-solid fa-pen-to-square"></i> Editar
                                 </Link>
                             </td>
                             <td class="border border-gray-400 px-4 py-4">

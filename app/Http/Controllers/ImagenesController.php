@@ -49,9 +49,12 @@ class ImagenesController extends Controller
     }
 
 
-    public function edit(imagenes $imagen)
+    public function edit(imagenes $image)
     {
-        return Inertia::render('Imagenes/Edit', ['imagen'=>$imagen]);
+        $imagen = imagenes::findOrFail($image);
+    
+    return Inertia::render('Imagenes/Edit',compact('imagen'));
+        // return Inertia::render('Imagenes/Edit', compact('image'));
     }
 
     public function update(Request $request, imagenes $imagen)
