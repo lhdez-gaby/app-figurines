@@ -22,25 +22,25 @@ const deleteImagen = (id,name) =>{
         confirmButtonText:'<i class="fa-solid fa-check"></i> Sí,eliminar',
         cancelButtonText:'<i class="fa-solid fa-ban"></i> Cancelar'
     }).then((result) =>{
-        form.delete(route('miseventos.destroy',id));
+        form.delete(route('miseventosReservados.destroy',id));
     });
 }
 </script>
 
 <template>
-    <Head title="Eventos" />
+    <Head title="Eventos Reservados" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Eventos</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Eventos Reservados</h2>
         </template>
 
         <div class="py-12">
             <div class="bg-white grid v-screen place-items-center">
                 <div class="mt-3 mb-3 flex">
-                    <Link :href="route('miseventos.create')"
-                    :class="'px-2 py-4 bg-gray-800 text-white border rounded-md font-semibold text-xs'">
-                        <i class="fa-solid fa-plus-circle"></i> Agregar
+                    <Link :href="route('miseventosReservados.create')"
+                    :class="'px-2 py-4 bg-gray-800 text-white border rounded-md  text-xs'">
+                        <i class="fa-solid fa-plus-circle"></i> Reservar evento
                     </Link>
                 </div>
             </div>
@@ -49,19 +49,20 @@ const deleteImagen = (id,name) =>{
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="px-4 py-4"> Id</th> 
-                            <th class="px-4 py-4"> Título</th>
-                            <th class="px-4 py-4"> Imagen</th>
-                            <th class="px-4 py-4"> Descripción</th>
-                            <th class="px-4 py-4"> Precio</th>
-                            <th class="px-4 py-4"> Duración</th>
+                            <th class="px-4 py-4"> Contratante</th>
+                            <th class="px-4 py-4"> Evento</th>
+                            <th class="px-4 py-4"> Fecha</th>
+                            <th class="px-4 py-4"> Hora</th>
+                            <th class="px-4 py-4"> Dirección</th>
+                            <th class="px-4 py-4"> Teléfono</th>
+                            <th class="px-4 py-4"> Estado</th>
                             <th class="px-4 py-4"> </th>                         
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="event in eventos.data" :key="event.id">
                             <td class="border border-gray-400 px-4 py-4">{{ event.id }}</td>
-                            <td class="border border-gray-400 px-4 py-4 w-64">{{ event.nombre }}</td>
-                            <td class="border border-gray-400 px-4 py-4"><img class="h-12 rounded" :src="event.imagen" :alt="event.nombre"></td>
+                            <td class="border border-gray-400 px-4 py-4 w-64">{{ event.user_id }}</td>
                             <td class="border border-gray-400 px-4 py-4 w-80">{{ event.detalle }}</td>
                             <td class="border border-gray-400 px-4 py-4">{{ event.precio }}</td>
                             <td class="border border-gray-400 px-4 py-4">{{ event.duracion }}</td>

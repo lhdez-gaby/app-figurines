@@ -6,25 +6,33 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
+defineProps({
+    users:Array,
+    eventos:Array,
+});
+
+
 const form = useForm({
-    nombre:"",
-    imagen:"",
-    detalle:"",
-    precio: 0.0,
-    duracion: 0,
+    user_id: "",
+    evento_id: "",
+    fecha: new Date(),
+    hora: "",
+    direccion: "",
+    estado: "En espera",
+    telefono:"",
 });
 
 const submit = () =>{
-    form.post(route('miseventos.store'));
+    form.post(route('miseventosReservados.store'));
 };
 </script>
 
 <template>
-    <Head title="Agregar evento" />
+    <Head title="Reservar Evento" />
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Agregar evento</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Reservar evento</h2>
         </template>
 
         <div class="py-12">
@@ -32,73 +40,79 @@ const submit = () =>{
                 <div class="p-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <form @submit.prevent="submit">
             <div>
-                <InputLabel for="nombre" value="Título" />
+                <InputLabel for="user_id" value="Contratante" />
+                <select 
+                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded"
+                v-model="user_id" 
+                id="user_id" 
+                name="user_id">
+                    <option v-for="user in users" :key="user.id" :value="user.id">{{ user.name }}</option>
+                </select>
+            </div>
+
+            <div>
+                <InputLabel class="mt-2" for="evento_id" value="Evento" />
+                <select 
+                class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded"
+                v-model="evento_id" 
+                id="evento_id" 
+                name="evento_id">
+                    <option v-for="evento in eventos" :key="evento.id" :value="evento.id">{{ evento.nombre }}</option>
+                </select>
+            </div>
+
+            <div>
+                <InputLabel class="mt-2" for="fecha" value="Fecha" />
                 <TextInput
-                    id="nombre"
-                    type="text"
+                    id="fecha"
+                    type="date"
                     class="mt-1 block w-full"
-                    v-model="form.nombre"
+                    v-model="form.fecha"
                     required
                     autofocus
                 />
 
-                <InputError class="mt-2" :message="form.errors.nombre" />
+                <InputError class="mt-2" :message="form.errors.fecha" />
             </div>
-            <div class="mt-2">
-                <InputLabel for="imagen" value="Imagen" />
-
+            <div>
+                <InputLabel class="mt-2" for="hora" value="Hora" />
                 <TextInput
-                    id="imagen"
-                    type="file"
+                    id="hora"
+                    type="time"
+                    min="8:00" 
+                    max="18:00" 
+                    step="600"
                     class="mt-1 block w-full"
-                    @input="form.imagen = $event.target.files[0]"
+                    v-model="form.hora"
                     required
                 />
 
-                <InputError class="mt-2" :message="form.errors.imagen" />
+                <InputError class="mt-2" :message="form.errors.hora" />
             </div>
 
             <div>
-                <InputLabel class="mt-2" for="precio" value="Precio" />
-                <TextInput
-                    id="precio"
-                    type="number"
-                    class="mt-1 block w-full"
-                    v-model="form.precio"
-                    required
-                    
-                />
-
-                <InputError class="mt-2" :message="form.errors.precio" />
-            </div>
-            <div>
-                <InputLabel class="mt-2" for="duracion" value="Duración en horas" />
-                <TextInput
-                    id="duracion"
-                    type="number"
-                    class="mt-1 block w-full"
-                    v-model="form.duracion"
-                    required
-                    
-                />
-
-                <InputError class="mt-2" :message="form.errors.duracion" />
-            </div>
-            
-
-            <div>
-                <InputLabel class="mt-2" for="detalle" value="Descripción" />
+                <InputLabel class="mt-2" for="direccion" value="Dirección" />
                 
                 <TextInput
-                    id="detalle"
+                    id="direccion"
                     type="text"
                     class="mt-1 block w-full"
-                    v-model="form.detalle"
+                    v-model="form.direccion"
                     required
                 />
+                <InputError class="mt-2" :message="form.errors.direccion" />
+            </div>
+            <div>
+                <InputLabel class="mt-2" for="telefono" value="Teléfono" />
                 
-
-                <InputError class="mt-2" :message="form.errors.detalle" />
+                <TextInput
+                    id="telefono"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.telefono"
+                    required
+                />
+                <InputError class="mt-2" :message="form.errors.telefono" />
             </div>
             
             <div class="flex items-center justify-end mt-4">

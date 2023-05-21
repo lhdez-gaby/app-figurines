@@ -28,25 +28,35 @@ class FechaEventosController extends Controller
     
     public function create()
     {
-        
-        return Innertia::render('EventosReservados/Create');
+        $users =User::all();
+        $eventos = detalle_eventos::all();
+        return Inertia::render('EventosReservados/Create',compact('users','eventos'));
     }
 
     
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required | numeric',
-            'evento_id' => 'required | numeric',
-            'fecha' => 'required | date',
-            'hora' => 'required | time',
-            'estado' => 'required | max:30',
-            'direccion' => 'required | longText',
-            'telefono' => 'required | max: 15',
+            'user_id'=>['required'],
+            'evento_id'=>['required'],
+            'fecha'=>['required'],
+            'hora' =>['required'],
+            'direccion' =>['required','min:3'],
+            'estado' =>['required','min:3'],
+            'telefono' =>['required','min:7'],
         ]);
-        $eventoReservado = new fecha_eventos($request->input());
-        $eventoReservado->save();
-        return redirect('miseventos');
+
+        fecha_eventos::create([
+            'user_id'=>$request->user_id,
+            'evento_id'=>$request->evento_id,
+            'fecha'=>$request->fecha,
+            'hora'=>$request->hora,
+            'direccion' => $request->direccion,
+            'estado'=>$request->estado,
+            'telefono'=>$request->telefono,
+        ]);
+
+        return redirect('miseventosReservados');
     }
 
     
