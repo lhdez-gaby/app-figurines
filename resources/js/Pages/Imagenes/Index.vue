@@ -4,9 +4,6 @@ import { Head,Link,useForm } from '@inertiajs/vue3';
 import DangerButton from '@/Components/DangerButton.vue';
 import Swal from 'sweetalert2';
 
-// const props = defineProps({
-//     images: {type:Object}
-// });
 defineProps({
     images:Object,
 });

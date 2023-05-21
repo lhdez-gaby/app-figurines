@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class videos extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre','url-link']; 
+    protected $fillable = ['nombre','url_link']; 
 }
