@@ -9,6 +9,9 @@
             <Link :class="'link'" :href="route('acerca')">
                 Acerca de
             </Link>
+            <Link :class="'link'" :href="route('eventos')">
+                Eventos
+            </Link>
             <Link :class="'link'" :href="route('imagenes')">
                 Imágenes
             </Link>

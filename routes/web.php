@@ -10,6 +10,7 @@ use App\Http\Controllers\ImagenesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\FrontImagenesController;
 use App\Http\Controllers\FrontVideosController;
+use App\Http\Controllers\FrontEventosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,10 +40,10 @@ Route::get('/', function () {
 //     ]);
 // })->name('imagenes');
 
-Route::get('/imagenes',[FrontImagenesController::class, 'index'])->name('imagenes');
+
 
 Route::get('/acerca', function () {
-    return Inertia::render('Imagenes', [
+    return Inertia::render('Acerca', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
@@ -50,6 +51,8 @@ Route::get('/acerca', function () {
     ]);
 })->name('acerca');
 
+Route::get('/imagenes',[FrontImagenesController::class, 'index'])->name('imagenes');
+Route::get('/eventos',[FrontEventosController::class, 'index'])->name('eventos');
 Route::get('/videos',[FrontVideosController::class, 'index'])->name('videos');
 
 
