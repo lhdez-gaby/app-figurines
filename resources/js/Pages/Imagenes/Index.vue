@@ -12,17 +12,17 @@ const  form = useForm({
     id:''
 })
 
-const deleteImagen = (id,name) =>{
+const deleteImagen = (imgn) =>{
     const alerta = Swal.mixin({
         buttonsStyling:true
     });
     alerta.fire({
-        title: '¿Está seguro de eliminar '+name+' ?',
+        title: '¿Está seguro de eliminar '+imgn.nombre+' id '+imgn.id +'?',
         icon:'question',showCancelButton:true,
         confirmButtonText:'<i class="fa-solid fa-check"></i> Sí,eliminar',
         cancelButtonText:'<i class="fa-solid fa-ban"></i> Cancelar'
     }).then((result) =>{
-        form.delete(route('misimagenes.destroy',id));
+        form.delete(route('misimagenes.destroy',imgn));
     });
 }
 </script>
@@ -67,7 +67,7 @@ const deleteImagen = (id,name) =>{
                                 </Link>
                             </td>
                             <td class="border border-gray-400 px-4 py-4">
-                                <DangerButton @click="$event => deleteImagen(imgn.id,imgn.nombre)">
+                                <DangerButton @click="$event => deleteImagen(imgn)">
                                     <i class="fa-solid fa-trash"></i>
                                 </DangerButton>
                             </td>

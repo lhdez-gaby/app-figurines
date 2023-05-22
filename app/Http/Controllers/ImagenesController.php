@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\imagenes;
 use Inertia\Inertia;
 use App\Http\Resources\ImagenResource;
+use Illuminate\Support\Facades\Storage;
 
 class ImagenesController extends Controller
 {
@@ -34,7 +35,7 @@ class ImagenesController extends Controller
                 'imagen' => $imagen
             ]);
 
-            // return Redirect::route('misimagenes.index');
+            // return Redirect::route('misimagenes.index')->with('message', 'Imagen agregada de manera exitosa.');
             return redirect('misimagenes');
         }
 
@@ -65,9 +66,11 @@ class ImagenesController extends Controller
     }
 
   
-    public function destroy(imagenes $imagen)
+    public function destroy(imagenes $image)
     {
-        $imagen->delete();
-        return redirect('misimagenes');
+        dd($image->id);
+        Storage::delete($image->imagen);
+        $image->delete();
+        return Redirect::back;
     }
 }

@@ -63,7 +63,7 @@
       </section>
       <section class="buscar">
         <h2 class="buscar-item">¡NO TE PIERDAS LA DIVERSIÓN!</h2>
-        <RouterLink to="/servicios" class="buscar-item"><button class="btn">Buscar show</button></RouterLink>
+        <!-- <RouterLink to="/servicios" class="buscar-item"><button class="btn">Buscar show</button></RouterLink> -->
       </section>
       <section class="caracteristicas">
         <div class="caracteristica">

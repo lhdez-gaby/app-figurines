@@ -3,7 +3,7 @@
 
     <MainLayout>
         
-  <div class="main">
+  <div class="main" style="background: #07A5E7;">
     
     <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                                 <Dropdown v-if="$page.props.auth.user" align="right" width="48">
@@ -53,70 +53,23 @@
                 >Registrarse</Link
             >
         </template>
+      </div>
     </div>
-      <section class="banner">
-        <div class="frase">
-          <h1>ALEGRÍA , MAGIA Y DIVERSIÓN SOLO CON LOS FIGURINES SHOW</h1>
-        </div> 
-      </section>
-      <section class="buscar">
-        <h2 class="buscar-item">¡NO TE PIERDAS LA DIVERSIÓN!</h2>
-        <RouterLink to="/servicios" class="buscar-item"><button class="btn">Buscar show</button></RouterLink>
-      </section>
-      <section class="caracteristicas">
-        <div class="caracteristica">
-          <iconParty class="caracteristica__icon"/>
-          <h3 class="caracteristica__title">+300 personajes</h3>
-          <p class="caracteristica__text">Tradicionales, de moda y de buena calidad.</p>
-        </div>
-        <div class="caracteristica">
-          <iconCake class="caracteristica__icon"/>
-          <h3 class="caracteristica__title">+18 años</h3>
-          <p class="caracteristica__text">De experiencia nos respaldan</p>
-        </div>
-        <div class="caracteristica">
-          <iconBallon class="caracteristica__icon"/>
-          <h3 class="caracteristica__title">Entretenimiento garantizado</h3>
-          <p class="caracteristica__text">Tenemos una excelente manera de mantener a los niños y grandes entretenidos</p>
-        </div> 
-      </section>
-      <section class="descripcion">
-        <img src="@/assets/shows.png" alt="diferentes shows">
-        <div class="descripcion__textos">
-          <h2 class="descripcion__texto">Haciendo eventos para ti</h2>
-          <p class="descripcion__texto">Contratar un show es una excelente manera de animar a todos los invitados
-         y hacer que el evento sea más memorable. Los shows pueden incluir música, 
-          baile, comedia, magia  y otros actos, según sea el caso, que harán que todos
-          sus invitados se diviertan y se sientan parte del evento.</p>
-          <p class="descripcion__texto">
-            Tenemos variedad de opciones, hay opciones para todos los gustos,
-              lo que te permitirá elegir el tipo de show que mejor se adapte a tus necesidades 
-              y preferencias.
-          </p>
-          <p class="descripcion__texto">
-            Nuestros shows son realizados con profesionalismo y calidad, desde el vestuario y
-            la producción hasta la interpretación. Estamos empeñados en brindar una 
-            experiencia única e inolvidable para todos los invitados.
-          </p>
-        </div>
-        
-      </section>
-      <section class="opiniones">
-        <h2 class="opiniones__title">LO QUE NUESTROS CLIENTES OPINAN</h2>
-        <div class="opinion">
-          <div class="opinion_item">
-             <iconHappy class="opinion__icon"/>
-            <p class="opinion__texto">“Quedé muy contenta,todos los niños se divirtieron mucho, primero dios el otro año los volveré a contratar”</p>
-          </div>
-          <div class="opinion_item">
-            <iconHappy class="opinion__icon"/>
-            <p class="opinion__texto">“Estoy muy agradecida con los figurines que hicieron mi fiesta muy divertida con su  miniferia y el show de la casa de gaby, aparte de que el trato es de lo mejor”</p>
-          </div>
-        </div>
-        
-      </section>
-      //<RouterLink to="/contacto" class="contacto"><button class="btn">Contáctanos</button></RouterLink>
+    <!-- ----Contenido principal---- -->
+    <div class="mt-20">
+      <h1 class="title font-extrabold text-lg" style="color: #07A5E7; margin-left: 100px; margin-top: 30px; ">Imágenes de los figurines...</h1>
     </div>
+      <div class="grid grid-cols-3 mx-20">
+        <div
+          class="flex items-center justify-end flex-col p-2"
+          v-for = "imgn in imagenes.data"
+          :key="imgn.id"
+        >
+            <img class="rounded m-2 " :src="imgn.imagen" :alt="imgn.nombre">
+            <h2 class="text-center">{{ imgn.nombre }}</h2>
+            
+        </div>
+      </div>
     </MainLayout>
 </template>
 
@@ -127,13 +80,9 @@ import MainLayout from '@/Layouts/MainLayout.vue';
 import { Head, Link } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
-// Local
-import iconCake from '../Components/icons/IconCake.vue'
-import iconParty from '../Components/icons/IconParty.vue'
-import iconHappy from '../Components/icons/IconHappy.vue'
-import iconBallon from '../Components/icons/iconBalloon.vue'
 
 defineProps({
+    imagenes: Object,
     canLogin: {
         type: Boolean,
     },
@@ -150,3 +99,9 @@ defineProps({
     },
 });
 </script>
+
+<style scoped>
+  .main {
+    background-color: #07A5E7;
+  }
+</style>

@@ -56,51 +56,32 @@
     </div>
 
 
-      <section class="banner">
-        <div class="frase">
-          <h1>ALEGRÍA , MAGIA Y DIVERSIÓN SOLO CON LOS FIGURINES SHOW</h1>
-        </div> 
-      </section>
-      <section class="buscar">
-        <h2 class="buscar-item">¡NO TE PIERDAS LA DIVERSIÓN!</h2>
-        <RouterLink to="/servicios" class="buscar-item"><button class="btn">Buscar show</button></RouterLink>
-      </section>
-
-      <section class="opiniones" style="color: white; margin-left: 100px; margin-top: 30px;">
-        <b>
+      <!-- <section class="mt-20" style="color: white; margin-left: 100px; margin-top: 30px;">
+       
           <h2 class="title">Shows de los figurines...</h2>
-        </b>
-      </section>
+       
+      </section> -->
+
+      <div class="mt-20">
+      <h1 class="title font-extrabold text-lg" style="color: white; margin-left: 100px; margin-top: 50px; ">Estos son algunos de nuestros videos...</h1>
+    </div>
+
+      <div class="grid grid-cols-2 mx-20 p-2">
         
-      <section class="contenedor" style="display: flex; justify-content: center;">
-        <div class="row">
-          <div class="col-12" style="padding-bottom: 50%; height: 0; margin-top: 50px; margin-bottom: 100px;">
-            <div class="embed-responsive embed-responsive-1by1">
-              <iframe class="embed-responsive-item w-full aspect-video"
-                style="height: auto; width: 620px;" 
-                src="https://youtube.com/embed/4HT0SJ3YY0Y" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-          
-          <div class="col-12" style="padding-bottom: 50%; height: 0; margin-top: 50px; margin-bottom: 100px;">
-            <div class="embed-responsive embed-responsive-1by1">
-              <iframe class="embed-responsive-item w-full aspect-video"
-                style="height: auto; width: 620px;" 
-                src="https://youtube.com/embed/iEkDT0aajtk" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-          
-          <div class="col-12" style="padding-bottom: 50%; height: 0; margin-top: 50px; margin-bottom: 100px;">
-            <div class="embed-responsive embed-responsive-1by1">
-              <iframe class="embed-responsive-item w-full aspect-video"
-                style="height: auto; width: 620px;"
-                src="https://youtube.com/embed/LwLkyt_CXGM" frameborder="0" allowfullscreen></iframe>
-            </div>
-          </div>
-
+        <div
+          class="flex items-center justify-end flex-col p-2 m-2"
+          v-for = "vid in videos.data"
+          :key="vid.id"
+        >
+          <div style="margin-top: 25px; margin-bottom: 50px;">
+            
+            <iframe class="embed-responsive-item aspect-video"
+                style="height: auto; width: 520px;" 
+                :src="vid.url_link" frameborder="0" allowfullscreen></iframe>
+            <h2 class="text-center p-2" style="color:white">{{ vid.nombre }}</h2>
+          </div>  
         </div>
-      </section>
-
+      </div> 
 
       <section class="opiniones" style="color: white; margin-inline: 50px; text-align: center;">
         <b>
@@ -133,13 +114,12 @@ import { Head, Link } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 // Local
-import iconCake from '../Components/icons/IconCake.vue'
-import iconParty from '../Components/icons/IconParty.vue'
 import iconHappy from '../Components/icons/IconHappy.vue'
-import iconBallon from '../Components/icons/iconBalloon.vue'
+
 
 
 defineProps({
+    videos:Object,
     canLogin: {
         type: Boolean,
     },

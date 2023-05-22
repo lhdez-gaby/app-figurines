@@ -8,6 +8,8 @@ use App\Http\Controllers\DetalleEventosController;
 use App\Http\Controllers\FechaEventosController;
 use App\Http\Controllers\ImagenesController;
 use App\Http\Controllers\VideosController;
+use App\Http\Controllers\FrontImagenesController;
+use App\Http\Controllers\FrontVideosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,14 +30,16 @@ Route::get('/', function () {
     ]);
 })->name('main');
 
-Route::get('/imagenes', function () {
-    return Inertia::render('Imagenes', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('imagenes');
+// Route::get('/imagenes', function () {
+//     return Inertia::render('Imagenes', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// })->name('imagenes');
+
+Route::get('/imagenes',[FrontImagenesController::class, 'index'])->name('imagenes');
 
 Route::get('/acerca', function () {
     return Inertia::render('Imagenes', [
@@ -46,26 +50,14 @@ Route::get('/acerca', function () {
     ]);
 })->name('acerca');
 
-Route::get('/videos', function () {
-    return Inertia::render('Videos', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('videos');
+Route::get('/videos',[FrontVideosController::class, 'index'])->name('videos');
+
+
 
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
