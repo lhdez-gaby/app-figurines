@@ -63,7 +63,7 @@
       </section>
       <section class="buscar">
         <h2 class="buscar-item">¡NO TE PIERDAS LA DIVERSIÓN!</h2>
-        <!-- <RouterLink to="/servicios" class="buscar-item"><button class="btn">Buscar show</button></RouterLink> -->
+        <Link :href="route('eventos')" :class="'link p-4 rounded-full'">Buscar show</Link>
       </section>
       <section class="caracteristicas">
         <div class="caracteristica">
@@ -103,7 +103,7 @@
         </div>
         
       </section>
-      <section class="opiniones">
+      <section class="opiniones my-4">
         <h2 class="opiniones__title">LO QUE NUESTROS CLIENTES OPINAN</h2>
         <div class="opinion">
           <div class="opinion_item">
@@ -156,12 +156,13 @@ defineProps({
 
 <style scoped>
 
-.linkClass{
-  color:var(--vt-c-pink);
+.link{
+  background: #EA4B9B;
+  color:white;
 }
 
-.linkClass:hover{
-  color: var(--color-text-link-active);
+.link:hover{
+  color: #07A5E7;
 }
 
 .banner{

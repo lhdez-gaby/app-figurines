@@ -10,7 +10,7 @@
                 Acerca de
             </Link>
             <Link :class="'link'" :href="route('eventos')">
-                Eventos
+                Servicios
             </Link>
             <Link :class="'link'" :href="route('imagenes')">
                 Imágenes

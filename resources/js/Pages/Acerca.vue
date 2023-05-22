@@ -54,68 +54,43 @@
             >
         </template>
     </div>
-      <section class="banner">
-        <div class="frase">
-          <h1>ALEGRÍA , MAGIA Y DIVERSIÓN SOLO CON LOS FIGURINES SHOW</h1>
-        </div> 
-      </section>
-      <section class="buscar">
-        <h2 class="buscar-item">¡NO TE PIERDAS LA DIVERSIÓN!</h2>
-        <RouterLink to="/servicios" class="buscar-item"><button class="btn">Buscar show</button></RouterLink>
-      </section>
-      <section class="caracteristicas">
-        <div class="caracteristica">
-          <iconParty class="caracteristica__icon"/>
-          <h3 class="caracteristica__title">+300 personajes</h3>
-          <p class="caracteristica__text">Tradicionales, de moda y de buena calidad.</p>
-        </div>
-        <div class="caracteristica">
-          <iconCake class="caracteristica__icon"/>
-          <h3 class="caracteristica__title">+18 años</h3>
-          <p class="caracteristica__text">De experiencia nos respaldan</p>
-        </div>
-        <div class="caracteristica">
-          <iconBallon class="caracteristica__icon"/>
-          <h3 class="caracteristica__title">Entretenimiento garantizado</h3>
-          <p class="caracteristica__text">Tenemos una excelente manera de mantener a los niños y grandes entretenidos</p>
-        </div> 
-      </section>
-      <section class="descripcion">
-        <img src="@/assets/shows.png" alt="diferentes shows">
-        <div class="descripcion__textos">
-          <h2 class="descripcion__texto">Haciendo eventos para ti</h2>
-          <p class="descripcion__texto">Contratar un show es una excelente manera de animar a todos los invitados
-         y hacer que el evento sea más memorable. Los shows pueden incluir música, 
-          baile, comedia, magia  y otros actos, según sea el caso, que harán que todos
-          sus invitados se diviertan y se sientan parte del evento.</p>
-          <p class="descripcion__texto">
-            Tenemos variedad de opciones, hay opciones para todos los gustos,
-              lo que te permitirá elegir el tipo de show que mejor se adapte a tus necesidades 
-              y preferencias.
-          </p>
-          <p class="descripcion__texto">
-            Nuestros shows son realizados con profesionalismo y calidad, desde el vestuario y
-            la producción hasta la interpretación. Estamos empeñados en brindar una 
-            experiencia única e inolvidable para todos los invitados.
-          </p>
-        </div>
-        
-      </section>
-      <section class="opiniones">
-        <h2 class="opiniones__title">LO QUE NUESTROS CLIENTES OPINAN</h2>
-        <div class="opinion">
-          <div class="opinion_item">
-             <iconHappy class="opinion__icon"/>
-            <p class="opinion__texto">“Quedé muy contenta,todos los niños se divirtieron mucho, primero dios el otro año los volveré a contratar”</p>
-          </div>
-          <div class="opinion_item">
-            <iconHappy class="opinion__icon"/>
-            <p class="opinion__texto">“Estoy muy agradecida con los figurines que hicieron mi fiesta muy divertida con su  miniferia y el show de la casa de gaby, aparte de que el trato es de lo mejor”</p>
-          </div>
-        </div>
-        
-      </section>
-      //<RouterLink to="/contacto" class="contacto"><button class="btn">Contáctanos</button></RouterLink>
+    <main class="acerca mt-20" >
+    <h1 class="py-8 text-2xl text-center" style="color: #07A5E7;">Acerca de los figurines.</h1>
+    <section class="historia descripcion text-white flex items-center " >
+      <img class="imagen pl-20" src="@/assets/historia.png" alt="Personajes de los shows">
+      <div class="flex flex-col pl-12 pr-20">
+        <h2 class="title font-extrabold pb-4">Un poco de historia</h2>
+        <p>Después de organizar algunas fiestas infantiles exitosas, decidimos 
+          reunir aun más talento y formar una empresa dedicada a brindar entretenimiento de calidad.
+          Con el tiempo, la empresa creció y se convirtió en un referente en la industria de shows para 
+          fiestas infantiles en Puebla.</p>
+      </div>
+    </section>
+    <section class="mision flex items-center ">
+      <img class="imagen pr-20" src="@/assets/mision.png" alt="Personajes de los shows">
+      <div class="pr-12 pl-20">
+        <h2 class="title font-extrabold pb-4">Misión</h2>
+        <p>
+          Brindar servicios de entretenimiento infantil de la más alta calidad, atractivos, dinámicos, y novedosos con personajes bien caracterizados innovando constantemente dentro del medio del espectáculo haciendo de cada show un evento único para lograr la satisfacción total de nuestros clientes.
+        </p>
+      </div>
+    </section>
+    <section class="vision descripcion flex text-white items-center">
+      <img class="imagen pl-20" src="@/assets/vision.png" alt="Personajes de los shows">
+      <div class="flex flex-col pl-12 pr-20">
+        <h2 class="title font-extrabold pb-4">Visión</h2>
+        <p>
+          Consolidarnos dentro del medio de entretenimiento infantil como una empresa con altos
+          estándares de calidad en constante crecimiento y transformáción, siendo referentes de
+          servicio, profesionalismos y buen gusto que nos haga únicos en nuestro segmento.
+        </p>
+      </div>
+    </section>
+    <p class="mas text-center m-16">
+      Si quieres saber más acerca de nosotros te invitamos a seguirnos en nuestras redes sociales
+    </p>
+  </main>
+      
     </div>
     </MainLayout>
 </template>
@@ -150,3 +125,23 @@ defineProps({
     },
 });
 </script>
+
+<style scoped>
+.descripcion{
+  background: linear-gradient(to right,#07A5E7,#2C61AC);
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.mision{
+  display:flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+
+
+</style>

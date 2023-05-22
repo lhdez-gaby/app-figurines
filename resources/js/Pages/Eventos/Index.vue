@@ -66,15 +66,15 @@ const deleteImagen = (id,name) =>{
                             <td class="border border-gray-400 px-4 py-4">{{ event.precio }}</td>
                             <td class="border border-gray-400 px-4 py-4">{{ event.duracion }}</td>
                             <td class="border border-gray-400 px-4 py-4">
-                                <Link :href="route('misimagenes.edit',event.id)"
+                                <!-- <Link :href="route('misimagenes.edit',event.id)"
                                 :class="'px-4 py-2 bg-blue-800 text-white border rounded-md font-semibold text-xs'">
                                     <i class="fa-solid fa-plus-edit"></i>Editar
-                                </Link>
+                                </Link> -->
                             </td>
                             <td class="border border-gray-400 px-4 py-4">
-                                <DangerButton @click="$event => deleteImagen(event.id,event.nombre)">
+                                <!-- <DangerButton @click="$event => deleteImagen(event.id,event.nombre)">
                                     <i class="fa-solid fa-trash"></i>
-                                </DangerButton>
+                                </DangerButton> -->
                             </td>
                         </tr>
                     </tbody>
