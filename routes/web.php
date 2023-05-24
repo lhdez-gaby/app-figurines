@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('miseventos',DetalleEventosController::class);
+    Route::delete('miseventos/{id}',[DetalleEventosController::class,'destroy'])->name('miseventos.destroy');
     Route::resource('miseventosReservados',FechaEventosController::class);
     Route::resource('misimagenes',ImagenesController::class);
     Route::delete('misimagenes/{id}',[ImagenesController::class,'destroy'])->name('misimagenes.destroy');

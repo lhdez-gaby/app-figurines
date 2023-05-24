@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\detalle_eventos;
 use Inertia\Inertia;
 use App\Http\Resources\EventoResource;
+use Illuminate\Support\Facades\Storage;
 
 class DetalleEventosController extends Controller
 {
@@ -73,9 +74,13 @@ class DetalleEventosController extends Controller
         return redirect('eventos');
     }
 
-    public function destroy(detalle_eventos $evento)
+    public function destroy($id)
     {
-        $evento ->delete();
-        return redirect('eventos');
+        $evento = detalle_eventos::findOrFail($id);
+        
+        Storage::delete($evento->imagen);
+        $evento->delete();
+        return redirect()->back();
+      
     }
 }
