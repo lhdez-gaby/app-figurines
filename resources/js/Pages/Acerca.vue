@@ -1,5 +1,5 @@
 <template>
-    <Head title="Imágenes" />
+    <Head title="Acerca de nosotros" />
 
     <MainLayout>
         

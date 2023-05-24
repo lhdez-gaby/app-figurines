@@ -1,7 +1,6 @@
 <template>
     <header class="header">
       <div class="wrapper">
-        <!-- <img alt="Logo los figurines" class="logo" src="@/assets/logoFigurines.png" /> -->
         <Link :href="route('main')">
             <img alt="Logo los figurines" class="logo" src="@/assets/logoFigurines.png" />
         </Link>
@@ -17,6 +16,9 @@
             </Link>
             <Link :class="'link'" :href="route('videos')">
                 Videos
+            </Link>
+            <Link :class="'link'" :href="route('contacto')">
+                Contacto
             </Link>
           <!-- <RouterLink to="/servicios" class="link">Servicios</RouterLink>
           <RouterLink to="/acerca" class="link">Acerca</RouterLink>

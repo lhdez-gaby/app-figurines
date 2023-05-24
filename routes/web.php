@@ -11,6 +11,7 @@ use App\Http\Controllers\VideosController;
 use App\Http\Controllers\FrontImagenesController;
 use App\Http\Controllers\FrontVideosController;
 use App\Http\Controllers\FrontEventosController;
+use App\Http\Controllers\FrontContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,15 +32,6 @@ Route::get('/', function () {
     ]);
 })->name('main');
 
-// Route::get('/imagenes', function () {
-//     return Inertia::render('Imagenes', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// })->name('imagenes');
-
 
 
 Route::get('/acerca', function () {
@@ -55,6 +47,16 @@ Route::get('/imagenes',[FrontImagenesController::class, 'index'])->name('imagene
 Route::get('/eventos',[FrontEventosController::class, 'index'])->name('eventos');
 Route::get('/videos',[FrontVideosController::class, 'index'])->name('videos');
 
+Route::get('/contacto', function () {
+    return Inertia::render('Contacto', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('contacto');
+
+Route::post('/contact',FrontContactController::class)->name('contact');
 
 
 

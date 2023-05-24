@@ -117,7 +117,10 @@
         </div>
         
       </section>
-      <!-- <RouterLink to="/contacto" class="contacto"><button class="btn">Contáctanos</button></RouterLink> -->
+      <section class="opiniones">
+        <Link :href="route('contacto')" :class="'link p-4 my-8 rounded-full'">Contáctanos</Link>
+      </section>
+      
     </div>
     </MainLayout>
 </template>
