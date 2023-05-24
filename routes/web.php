@@ -71,8 +71,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('miseventos',DetalleEventosController::class);
     Route::resource('miseventosReservados',FechaEventosController::class);
     Route::resource('misimagenes',ImagenesController::class);
+    Route::delete('misimagenes/{id}',[ImagenesController::class,'destroy'])->name('misimagenes.destroy');
     Route::resource('misvideos',VideosController::class);
     Route::get('reporte',[FechaEventosController::class,'reports'])->name('reporte');
+
 });
 
 

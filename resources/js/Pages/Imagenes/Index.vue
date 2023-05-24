@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head,Link,useForm } from '@inertiajs/vue3';
+import { Head,Link,useForm, router } from '@inertiajs/vue3';
 import DangerButton from '@/Components/DangerButton.vue';
 import Swal from 'sweetalert2';
 
@@ -17,12 +17,14 @@ const deleteImagen = (imgn) =>{
         buttonsStyling:true
     });
     alerta.fire({
-        title: '¿Está seguro de eliminar '+imgn.nombre+' id '+imgn.id +'?',
+        title: '¿Está seguro de eliminar '+imgn.nombre+'?',
         icon:'question',showCancelButton:true,
         confirmButtonText:'<i class="fa-solid fa-check"></i> Sí,eliminar',
         cancelButtonText:'<i class="fa-solid fa-ban"></i> Cancelar'
     }).then((result) =>{
-        form.delete(route('misimagenes.destroy',imgn));
+        if (result.isConfirmed) {
+            router.delete('/misimagenes/' + imgn.id);
+        }
     });
 }
 </script>
@@ -67,9 +69,9 @@ const deleteImagen = (imgn) =>{
                                 </Link> -->
                             </td>
                             <td class="border border-gray-400 px-4 py-4">
-                                <!-- <DangerButton @click="$event => deleteImagen(imgn)">
+                                <DangerButton @click="$event => deleteImagen(imgn)">
                                     <i class="fa-solid fa-trash"></i>
-                                </DangerButton> -->
+                                </DangerButton>
                             </td>
                         </tr>
                     </tbody>

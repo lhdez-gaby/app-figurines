@@ -50,7 +50,7 @@ class ImagenesController extends Controller
     }
 
 
-    public function edit(imagenes $image)
+    public function edit(imagenes $imagen)
     {
         $imagen = imagenes::findOrFail($image);
     
@@ -66,11 +66,12 @@ class ImagenesController extends Controller
     }
 
   
-    public function destroy(imagenes $image)
+    public function destroy($id)
     {
-        dd($image->id);
+        $image =imagenes::findOrFail($id);
+        
         Storage::delete($image->imagen);
         $image->delete();
-        return Redirect::back;
+        return redirect()->back();
     }
 }
