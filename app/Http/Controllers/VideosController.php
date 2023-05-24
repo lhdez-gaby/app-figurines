@@ -57,9 +57,10 @@ class VideosController extends Controller
     }
 
    
-    public function destroy(videos $video)
+    public function destroy($id)
     {
+        $video =videos::findOrFail($id);
         $video->delete();
-        return redirect('misvideos');
+        return redirect()->back();
     }
 }

@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head,Link,useForm } from '@inertiajs/vue3';
+import { Head,Link,useForm,router } from '@inertiajs/vue3';
 import DangerButton from '@/Components/DangerButton.vue';
 import Swal from 'sweetalert2';
 
@@ -22,7 +22,9 @@ const deleteImagen = (id,name) =>{
         confirmButtonText:'<i class="fa-solid fa-check"></i> Sí,eliminar',
         cancelButtonText:'<i class="fa-solid fa-ban"></i> Cancelar'
     }).then((result) =>{
-        form.delete(route('misvideos.destroy',id));
+        if (result.isConfirmed) {
+            router.delete('/misvideos/' + id);
+        }
     });
 }
 
@@ -69,9 +71,9 @@ const deleteImagen = (id,name) =>{
                                 </Link> -->
                             </td>
                             <td class="border border-gray-400 px-4 py-4">
-                                <!-- <DangerButton @click="$event => deleteImagen(vid.id,vid.nombre)">
+                                <DangerButton @click="$event => deleteImagen(vid.id,vid.nombre)">
                                     <i class="fa-solid fa-trash"></i>
-                                </DangerButton> -->
+                                </DangerButton>
                             </td>
                         </tr>
                     </tbody>
