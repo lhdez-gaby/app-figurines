@@ -63,10 +63,10 @@ const deleteImagen = (imgn) =>{
                             <td class="border border-gray-400 px-4 py-4">{{ imgn.nombre }}</td>
                             <td class="border border-gray-400 px-4 py-4"><img class="h-12 rounded" :src="imgn.imagen" :alt="imgn.nombre"></td>
                             <td class="border border-gray-400 px-4 py-4">
-                                <!-- <Link :href="route('misimagenes.edit',imgn.id)"
+                                <Link :href="route('misimagenes.edit',imgn.id)"
                                 :class="'px-4 py-2 bg-blue-800 text-white border rounded-md font-semibold text-xs'">
                                     <i class="fa-solid fa-pen-to-square"></i> Editar
-                                </Link> -->
+                                </Link>
                             </td>
                             <td class="border border-gray-400 px-4 py-4">
                                 <DangerButton @click="$event => deleteImagen(imgn)">

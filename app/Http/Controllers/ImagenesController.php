@@ -39,9 +39,8 @@ class ImagenesController extends Controller
             return redirect('misimagenes');
         }
 
-        // $imagen = new imagenes($request ->input());
-        // $imagen->save();
-        return Redirect::back();
+        
+        return redirect()->back();
     }
 
     public function show(imagenes $imagenes)
@@ -50,18 +49,36 @@ class ImagenesController extends Controller
     }
 
 
-    public function edit(imagenes $imagen)
+    public function edit($id)
     {
-        $imagen = imagenes::findOrFail($image);
+        $imagen = imagenes::findOrFail($id);
     
-    return Inertia::render('Imagenes/Edit',compact('imagen'));
-        // return Inertia::render('Imagenes/Edit', compact('image'));
+        return Inertia::render('Imagenes/Edit',compact('imagen'));
     }
 
-    public function update(Request $request, imagenes $imagen)
+    public function update(Request $request, $id)
     {
-        $request->validate(['name'=>'required|max:150']);
-        $imagen->update($request->all());
+        $image =imagenes::findOrFail($id);
+        $imagen = $image->imagen;
+        
+        $request->validate([
+            'nombre'=>['required','min:3']
+        ]);
+        
+        
+        
+         if($request->hasFile('imagen')){
+            
+            Storage::delete($image->imagen);
+            $imagen = $request->file('imagen')->store('imagenes');
+           
+        }
+        
+        $image->update([
+            'nombre' => $request->nombre,
+            'imagen' => $imagen
+        ]);
+
         return redirect('misimagenes');
     }
 
