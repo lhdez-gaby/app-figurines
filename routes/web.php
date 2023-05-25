@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('miseventos',DetalleEventosController::class);
     Route::delete('miseventos/{id}',[DetalleEventosController::class,'destroy'])->name('miseventos.destroy');
+    Route::post('miseventos/{id}',[DetalleEventosController::class,'update'])->name('miseventos.update');
     Route::resource('miseventosReservados',FechaEventosController::class);
     Route::resource('misimagenes',ImagenesController::class);
     Route::delete('misimagenes/{id}',[ImagenesController::class,'destroy'])->name('misimagenes.destroy');

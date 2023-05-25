@@ -56,22 +56,43 @@ class DetalleEventosController extends Controller
     }
 
  
-    public function edit(detalle_eventos $evento)
+    public function edit($id)
     {
-        return Inertia::render('Eventos/Edit', ['evento'=>$evento]);
+       
+        $evento = detalle_eventos::findOrFail($id);
+        
+        return Inertia::render('Eventos/Edit',compact('evento'));
     }
 
-    public function update(Request $request, detalle_eventos $evento)
+    public function update(Request $request, $id)
     {
+        $evento =detalle_eventos::findOrFail($id);
+        $imagen = $evento->imagen;
+
         $request->validate([
-            'nombre' =>'required|max:200',
-            'imagen' =>'required|max:300',
-            'detalle' =>'required|longText',
-            'precio' =>'required|float',
-            'duracion' =>'required|numeric'
-        ]);   
-        $evento->update($request->input());
-        return redirect('eventos');
+            'nombre'=>['required','min:3'],
+            'detalle'=>['required','min:3'],
+            'precio'=>['required'],
+            'duracion'=>['required'],
+        ]);
+
+        if($request->hasFile('imagen')){
+            Storage::delete($evento->imagen);
+            $imagen = $request->file('imagen')->store('eventos');
+        }
+
+        $precio = (float)$request->precio;
+        $duracion = (int)$request->duracion;
+
+        $evento->update([
+            'nombre' => $request->nombre,
+            'imagen' => $imagen,
+            'detalle' =>$request->detalle,
+            'precio' =>$precio,
+            'duracion' =>$duracion
+        ]);
+
+        return redirect('miseventos');  
     }
 
     public function destroy($id)
