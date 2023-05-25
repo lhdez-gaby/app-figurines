@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::post('misimagenes/{id}',[ImagenesController::class,'update'])->name('misimagenes.update');
     Route::resource('misvideos',VideosController::class);
     Route::delete('misvideos/{id}',[VideosController::class,'destroy'])->name('misvideos.destroy');
+    Route::post('misvideos/{id}',[VideosController::class,'update'])->name('misvideos.update');
     Route::get('reporte',[FechaEventosController::class,'reports'])->name('reporte');
 
 });

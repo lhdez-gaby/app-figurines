@@ -44,15 +44,27 @@ class VideosController extends Controller
     }
 
 
-    public function edit(videos $video)
+    public function edit($id)
     {
-        return Inertia::render('Videos/Edit', ['video'=>$video]);
+        $video = videos::findOrFail($id);
+        return Inertia::render('Videos/Edit',compact('video'));
+       
     }
 
-    public function update(Request $request, videos $video)
+    public function update(Request $request, $id)
     {
-        $request->validate(['name'=>'required|max:150']);
-        $video->update($request->all());
+        $video =videos::findOrFail($id); 
+
+        $request->validate([
+            'nombre'=>['required','min:3'],
+            'url_link'=>['required','min:3'],
+        ]);
+
+        $video->update([
+            'nombre' => $request->nombre,
+            'url_link' => $request->url_link
+        ]);
+
         return redirect('misvideos');
     }
 
